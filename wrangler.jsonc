@@ -1,0 +1,33 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "streamcrew",
+  "account_id": "295f1c7a914032b82ecbf2c8bb50059f",
+  "main": "src/worker.js",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "ROOMS",
+        "class_name": "RoomDO"
+      },
+      {
+        "name": "REGISTRY",
+        "class_name": "RegistryDO"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["RoomDO"]
+    },
+    {
+      "tag": "v2",
+      "new_sqlite_classes": ["RegistryDO"]
+    }
+  ]
+}

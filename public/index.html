@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StreamCrew — Assista tela junto, direto do navegador</title>
+  <meta name="description" content="Crie uma sala, mande o link e todo mundo assiste sua tela pelo navegador. Grátis, sem cadastro, sem instalação." />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content="#0b0d12" />
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+  <script>(function(){try{var t=localStorage.getItem("sc:theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";}document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="page-home">
+  <header class="topbar">
+    <a class="logo" href="/">
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+        <rect x="2" y="6" width="20" height="14" rx="3" fill="url(#g1)"/>
+        <path d="M20 10.5 L28 6.5 L28 19.5 L20 15.5 Z" fill="url(#g1)"/>
+        <circle cx="9" cy="26" r="2.4" fill="#8b5cf6"/>
+        <circle cx="15" cy="26" r="2.4" fill="#22d3ee"/>
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#8b5cf6"/>
+            <stop offset="1" stop-color="#22d3ee"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <span>StreamCrew</span>
+    </a>
+    <div class="topbar-actions">
+      <button id="theme-btn" class="icon-btn" type="button" title="Alternar tema" aria-label="Alternar tema">☀️</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Sua tela, a galera toda.<br /><span class="grad">Em um clique.</span></h1>
+      <p class="sub">
+        Crie uma sala, mande o link e todo mundo assiste pelo navegador —
+        tela, câmera e voz. Grátis, sem cadastro e sem instalar nada.
+      </p>
+
+      <div class="join-wrap">
+        <div class="mode-toggle" role="radiogroup" aria-label="Tipo de sala">
+          <button id="mode-public" class="mode-btn active" type="button" aria-pressed="true">Pública</button>
+          <button id="mode-private" class="mode-btn" type="button" aria-pressed="false">Privada 🔒</button>
+        </div>
+        <form id="join-form" class="join-card" autocomplete="off">
+          <label for="room-input" class="sr-only">Nome da sala</label>
+          <input id="room-input" type="text" placeholder="ex: filme-com-a-turma" maxlength="48" required />
+          <button type="submit" class="btn btn-primary">Criar sala →</button>
+          <button type="button" id="random-btn" class="btn btn-ghost" title="Gerar um nome aleatório">🎲</button>
+        </form>
+        <p id="mode-hint" class="hint">Sala pública aparece na lista — qualquer um entra pelo link.</p>
+      </div>
+    </section>
+
+    <section class="rooms" id="rooms-section">
+      <h2>Salas ativas agora</h2>
+      <div id="rooms-list" class="rooms-grid"></div>
+      <p id="rooms-empty" class="rooms-empty">Nenhuma sala no ar — crie a primeira!</p>
+    </section>
+
+    <section class="steps">
+      <h2>Como funciona</h2>
+      <ol class="steps-grid">
+        <li>
+          <span class="step-num">1</span>
+          <h3>Dê um nome pra sala</h3>
+          <p>Escolha o nome, crie e o link fica pronto na hora.</p>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <h3>Clique em transmitir</h3>
+          <p>Escolha a aba, janela ou tela inteira — com áudio, se quiser.</p>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <h3>Mande o link pra galera</h3>
+          <p>Entram pelo navegador, no PC ou celular. Sem instalar nada.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="features">
+      <h2>O que tem dentro</h2>
+      <div class="features-grid">
+        <div class="feature">
+          <span class="feature-ico">🖥️</span>
+          <h3>Tela com áudio</h3>
+          <p>Compartilhe aba, janela ou tela cheia com o som junto.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-ico">🎙️</span>
+          <h3>Câmera e voz</h3>
+          <p>Apareça, fale com o grupo ou combine os dois com a tela.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-ico">💬</span>
+          <h3>Chat da sala</h3>
+          <p>Converse por mensagem enquanto assiste junto.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-ico">🔓</span>
+          <h3>Sem trava</h3>
+          <p>Sem conta, sem limite de tempo e sem pagar nada.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-ico">🔒</span>
+          <h3>Salas privadas</h3>
+          <p>Com código de acesso: só entra quem você chamar.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-ico">📋</span>
+          <h3>Lista de salas</h3>
+          <p>Veja as salas públicas com gente dentro e chegue junto.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Feito com WebRTC + Cloudflare Workers. Conexão direta entre os participantes.</p>
+  </footer>
+
+  <script src="/js/theme.js"></script>
+  <script src="/js/home.js"></script>
+</body>
+</html>
